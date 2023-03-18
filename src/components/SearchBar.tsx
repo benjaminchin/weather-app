@@ -1,6 +1,8 @@
-import TextField from "@mui/material/TextField/TextField";
 import React, { useContext, useState } from "react";
 import { DataContext } from "../constants/DataContext";
+import TextField from "@mui/material/TextField/TextField";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputAdornment } from "@mui/material";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -29,11 +31,19 @@ const SearchBar = () => {
   return (
     <div className="search-box">
       <TextField
+        id="standard-basic"
         type="text"
         placeholder="Search City or Zip Code..."
         className="search-bar"
         onInput={(e) => setInput((e.target as HTMLInputElement).value)}
         onKeyDown={fetchData}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
       />
     </div>
   );
